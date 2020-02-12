@@ -1,32 +1,15 @@
 package com.kijo.gdaxservice;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.context.annotation.Bean;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
+@EnableScheduling
 public class GDAXServiceApplication {
-
-  private static final Logger log = LoggerFactory.getLogger(GDAXServiceApplication.class);
 
   public static void main(String[] args) {
     SpringApplication.run(GDAXServiceApplication.class, args);
-  }
-
-  @Bean
-  public CommandLineRunner run() throws Exception {
-    return args -> {
-
-      GDAXAccount account = restTemplate.getForObject("https://gturnquist-quoters.cfapps.io/api/random",
-          GDAXAccount.class);
-      log.info(account.toString());
-    };
   }
 
 }
