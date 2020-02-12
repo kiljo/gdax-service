@@ -1,7 +1,5 @@
 package com.kijo.gdaxservice;
 
-import com.kijo.gdaxservice.exchange.entity.GDAXAccount;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,25 +13,20 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 public class GDAXServiceApplication {
 
-	private static final Logger log = LoggerFactory.getLogger(GDAXServiceApplication.class);
+  private static final Logger log = LoggerFactory.getLogger(GDAXServiceApplication.class);
 
-	public static void main(String[] args) {
-		SpringApplication.run(GDAXServiceApplication.class, args);
-	}
+  public static void main(String[] args) {
+    SpringApplication.run(GDAXServiceApplication.class, args);
+  }
 
-	@Bean
-	public RestTemplate restTemplate(RestTemplateBuilder builder) {
-		return builder.
-		build();
-	}
+  @Bean
+  public CommandLineRunner run() throws Exception {
+    return args -> {
 
-    @Bean
-	public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
-		return args -> {
-			GDAXAccount account = restTemplate.getForObject(
-					"https://gturnquist-quoters.cfapps.io/api/random", GDAXAccount.class);
-			log.info(account.toString());
-		};
-	}
-	
+      GDAXAccount account = restTemplate.getForObject("https://gturnquist-quoters.cfapps.io/api/random",
+          GDAXAccount.class);
+      log.info(account.toString());
+    };
+  }
+
 }
