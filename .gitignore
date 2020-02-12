@@ -32,4 +32,4 @@ build/
 .history/
 
 ### Security ###
-/application.yml
+**/application.yml
