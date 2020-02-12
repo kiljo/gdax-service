@@ -1,0 +1,3 @@
+[submodule "src/gdaxapi"]
+	path = src/gdaxapi
+	url = https://github.com/irufus/gdax-java.git
