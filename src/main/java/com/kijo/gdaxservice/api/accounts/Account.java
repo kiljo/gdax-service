@@ -1,26 +1,23 @@
 package com.kijo.gdaxservice.api.accounts;
 
-import java.math.BigDecimal;
-
 /**
  * Created by irufus on 2/18/15.
  */
 public class Account {
   private String id;
   private String currency;
-  private BigDecimal balance;
-  private BigDecimal available;
-  private BigDecimal hold;
+  private Double balance;
+  private Double available;
+  private Double hold;
   private String profile_id;
 
   public Account() {
-    this.balance = BigDecimal.ZERO;
-    this.available = BigDecimal.ZERO;
-    this.hold = BigDecimal.ZERO;
+    this.balance = 0.0;
+    this.available = 0.0;
+    this.hold = 0.0;
   }
 
-  public Account(String id, String currency, BigDecimal balance, BigDecimal available, BigDecimal hold,
-      String profile_id) {
+  public Account(String id, String currency, Double balance, Double available, Double hold, String profile_id) {
     this.id = id;
     this.currency = currency;
     this.balance = balance;
@@ -37,27 +34,27 @@ public class Account {
     this.id = id;
   }
 
-  public BigDecimal getBalance() {
+  public Double getBalance() {
     return balance;
   }
 
-  public void setBalance(BigDecimal balance) {
+  public void setBalance(Double balance) {
     this.balance = balance;
   }
 
-  public BigDecimal getHold() {
+  public Double getHold() {
     return hold;
   }
 
-  public void setHold(BigDecimal hold) {
+  public void setHold(Double hold) {
     this.hold = hold;
   }
 
-  public BigDecimal getAvailable() {
+  public Double getAvailable() {
     return available;
   }
 
-  public void setAvailable(BigDecimal available) {
+  public void setAvailable(Double available) {
     this.available = available;
   }
 

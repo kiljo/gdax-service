@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.kijo.gdaxservice.api.accounts.Account;
 import com.kijo.gdaxservice.api.accounts.AccountService;
+import com.kijo.gdaxservice.firebase.FirebaseService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,19 +21,11 @@ public class AccountSchedule {
 
   private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
 
+  @Autowired
   AccountService accountService;
 
   @Autowired
-  public AccountSchedule(AccountService accountService) {
-    this.accountService = accountService;
-
-    log.info("Get accounts at {}", dateFormat.format(new Date()));
-
-    List<Account> accounts = this.accountService.getAccounts();
-
-    log.info("Accounts {}", accounts);
-
-  }
+  FirebaseService firebaseService;
 
   @Scheduled(fixedDelay = 20000)
   public void getAccounts() {
@@ -42,5 +35,6 @@ public class AccountSchedule {
 
     accounts.stream().forEach(a -> log.info("Account {}", a));
 
+    firebaseService.updateAccounts(accounts);
   }
 }

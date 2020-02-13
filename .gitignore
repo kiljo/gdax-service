@@ -33,3 +33,4 @@ build/
 
 ### Security ###
 **/application.yml
+**/gdax*firebase*adminsdk*.json
